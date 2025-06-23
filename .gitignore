@@ -1,0 +1,38 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.py[cod]
+venv/
+env/
+
+# Ignore Unreal Engine build files
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Ignore CARLA Simulator build/temp files
+CarlaUE4/Binaries/
+CarlaUE4/Intermediate/
+CarlaUE4/Saved/
+
+# Ignore user-specific project files
+*.suo
+*.user
+*.userprefs
+*.opensdf
+*.sdf
+*.cache
+*.log
+
+# Ignore large files not tracked by Git LFS
+*.uasset
+*.umap
+*.xodr
+*.uexp
+
+# Ignore git attributes file (if you want to keep it local)
+# .gitattributes
+
+# Ignore other OS files
+.DS_Store
+Thumbs.db
