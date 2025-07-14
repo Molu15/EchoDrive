@@ -18,4 +18,10 @@ This repository contains the necessary scripts and files for our Carla project.
 
 2.## Clone this Repository and all the files into your Root-Carla folder
 
-3.## Terminal: python start_carla.py
+3.## Install requirements: pip install -r requirements.txt
+
+4.## Open CarlaUE4.exe
+
+5.## Open cmd or powershell in the root folder.
+
+6.## Terminal: python start_carla.py
