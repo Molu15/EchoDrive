@@ -18,4 +18,4 @@ This repository contains the necessary scripts and files for our Carla project.
 
 2.## Clone this Repository and all the files into your Root-Carla folder
 
-3.## Terminal: python start.carla.py
+3.## Terminal: python start_carla.py
