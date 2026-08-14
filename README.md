@@ -20,12 +20,14 @@ In every condition the ego vehicle drives autonomously (CARLA autopilot); partic
 
 ### Hardware
 
-<img src="docs/study-setup.jpg" align="right" width="320" alt="Study setup: fixed-base replica car seat and Logitech G29 steering wheel in front of a triple-screen CARLA view, with the overhead webcam with a light blanket behind the study setup for more stabe light conditions.">
+<img src="docs/study-setup.jpg" align="right" width="320" alt="Study setup: fixed-base replica car seat and Logitech G29 steering wheel in front of a screen CARLA view, with the overhead webcam with a light blanket behind the study setup for more stable light conditions.">
 
 - Windows 10/11 PC able to run CARLA 0.9.13 (dedicated GPU with 6+ GB VRAM recommended, ~20 GB free disk space)
 - Webcam (used at OpenCV device index `0`) for hand-gesture tracking — mounted overhead and pointing down in the study setup
-- Stereo audio output — study setup used: Stereo Headphones from Audio-Technica ATH-A550Z (rendering via OpenAL)
+- Stereo audio output — study setup used: Stereo Headphones from Audio-Technica ATH-A550Z (rendering via OpenAL), chosen because no multi-speaker spatial rendering system was available during the study. The code is configured for stereo output; driving a surround-speaker setup would require changes to the audio code (`audio_manager.py`, `get_answer.py`)
 - Keyboard, or any input device that emits the <kbd>Space</kbd> and <kbd>Enter</kbd> keystrokes (study setup: a Logitech G29 steering wheel with a wheel-mounted scan button and a red TOR button mapped to these keys)
+
+*Pictured: the study apparatus — fixed-base replica seat, Logitech G29 wheel, and screen CARLA view. The white blanket spanning over the overhead webcam's field of view diffuses incoming light from the upper windows and stabilizes lighting conditions for hand tracking.*
 
 <br clear="right">
 
@@ -97,7 +99,23 @@ Each run writes semicolon-separated (`;`) CSV files to `CSVLogs\` (created autom
 | `gestureLog` | `gesture_manager.py` | `timestamp_initGestureTime`, `timestamp_inputGestureTime`, `gesture_reactTime`, `angle_preciseGesture`, `angle_gesture`, `angle_object`, `angle_deviation`, `matched_objAngle` |
 | `scoreLog` | `score_tracker.py` | `num_ObjEcholocations`, `score_total`, `correct_direction` |
 
-Timestamps are Unix epoch seconds; angles are in degrees; reaction times are in seconds.
+Value formats (as written by the code):
+
+- **Timestamps** (`timestamp_*`): Unix epoch seconds as floats, e.g. `1750172035.1421`. `timestamp_reaction` is `no reaction recorded` if the participant missed the 5 s window.
+- **Reaction times** (`reaction_time`, `gesture_reactTime`): seconds as floats, e.g. `1.3529`.
+- **Angles**: integer degrees 0–359, clockwise with 0 = front. `angle_preciseGesture` is the raw hand angle (e.g. `312`) — a leftover of the original concept with continuous directional cues (usable in a future multi-speaker setup); it is logged but not used for scoring. `angle_gesture` and `angle_object` are snapped to the cardinal directions `0`/`90`/`180`/`270`, so `angle_deviation` is `0`, `90`, or `180`.
+- **Booleans** (`successful_tor`, `matched_objAngle`, `gesturedetect_1round`, `gesturedetect_2round`): `True`/`False`; `gesturedetect_2round` stays empty when the first round succeeded.
+- **`result_echowave`**: `car found`, `pedestrian found`, `bicycle found`, `unknown found`, `no entity found`, or `entity to far away`.
+- **`correct_direction`**: the scanned object's direction — `front`, `back`, `left`, or `right`.
+- **Counters** (`num_ObjEcholocations`, `score_total`): integers; the score never drops below 0.
+- If a takeover interrupts a game round, the affected column contains `TOR aborted` instead.
+
+Sample (`gestureLog`):
+
+```
+timestamp_initGestureTime;timestamp_inputGestureTime;gesture_reactTime;angle_preciseGesture;angle_gesture;angle_object;angle_deviation;matched_objAngle
+1750172035.1421;1750172036.9310;1.7889;312;270;270;0;True
+```
 
 ## Repository structure
 
