@@ -25,9 +25,9 @@ In every condition the ego vehicle drives autonomously (CARLA autopilot); partic
 - Windows 10/11 PC able to run CARLA 0.9.13 (dedicated GPU with 6+ GB VRAM recommended, ~20 GB free disk space)
 - Webcam (used at OpenCV device index `0`) for hand-gesture tracking — mounted overhead and pointing down in the study setup
 - Stereo audio output — study setup used: Stereo Headphones from Audio-Technica ATH-A550Z (rendering via OpenAL), chosen because no multi-speaker spatial rendering system was available during the study. The code is configured for stereo output; driving a surround-speaker setup would require changes to the audio code (`audio_manager.py`, `get_answer.py`)
-- Keyboard, or any input device that emits the <kbd>Space</kbd> and <kbd>Enter</kbd> keystrokes (study setup: a Logitech G29 steering wheel with a wheel-mounted scan button and a red TOR button mapped to these keys)
+- Keyboard, or any input device that emits the <kbd>Space</kbd> and <kbd>Enter</kbd> keystrokes (study setup: a Logitech G29 steering wheel with wheel-mounted symmetrical scan buttons and a red TOR button mapped to these keys)
 
-*Pictured: the study apparatus — fixed-base replica seat, Logitech G29 wheel, and screen CARLA view. The white blanket spanning over the overhead webcam's field of view diffuses incoming light from the upper windows and stabilizes lighting conditions for hand tracking.*
+*Pictured: the study apparatus — fixed-base replica seat, Logitech G29 wheel, screen CARLA view, and overhead mounted webcam. The white blanket spanning over the overhead webcam's field of view diffused incoming light from the upper windows and stabilized lighting conditions for hand tracking.*
 
 <br clear="right">
 
