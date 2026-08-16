@@ -2,7 +2,7 @@
 
 EchoDrive is a gamified in-cabin system prototype designed to support situational awareness during automated (SAE Level 3) driving through spatialized audio cues and gesture-based responses. Built on CARLA 0.9.13, it implements an echolocation-inspired "call-and-answer" loop: the driver triggers a sonar-like scan, the nearest road user within 15 m (car, pedestrian, or cyclist) answers with a spatialized sound cue from its direction, and the driver points toward the perceived direction with a pointing index finger hand gesture tracked via webcam (MediaPipe). Correct gestures yield +5 points, errors −3, with live score feedback on the HUD. At scripted moments the system issues takeover requests (TORs), and reaction times to press the red TOR Accept Button (on the wheel) are logged. This prototype's study data is written to semicolon-separated CSV files.
 
-> **Archived repo artifact DOI for AutomotiveUI Adjunct '26 Submission: 10.5281/zenodo.21966705 (archived on 2026.08.16)
+> Archived repo artifact DOI for AutomotiveUI Adjunct '26 Submission (archived on 2026.08.16): <a href="https://doi.org/10.5281/zenodo.21966704"><img src="https://zenodo.org/badge/1007257388.svg" alt="DOI"></a> 
 
 ## Study conditions
 
