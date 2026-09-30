@@ -2,13 +2,6 @@
 
 EchoDrive is a gamified in-cabin system prototype designed to support situational awareness during automated (SAE Level 3) driving through spatialized audio cues and gesture-based responses. Built on CARLA 0.9.13, it implements an echolocation-inspired "call-and-answer" loop: the driver triggers a sonar-like scan, the nearest road user within 15 m (car, pedestrian, or cyclist) answers with a spatialized sound cue from its direction, and the driver points toward the perceived direction with a pointing index finger hand gesture tracked via webcam (MediaPipe). Correct gestures yield +5 points, errors −3, with live score feedback on the HUD. At scripted moments the system issues takeover requests (TORs), and reaction times to press the red TOR Accept Button (on the wheel) are logged. This prototype's study data is written to semicolon-separated CSV files.
 
-### Paper for AutomotiveUI Adjunct '26
-Julia Podlipensky, Vanessa Scherer, Monika Szuban, and Ignacio Alvarez. 2026. EchoDrive: Gamification of Perceptual Guidance
-via Spatial Audio in AV Driving Simulation. In 18th International Conference on Automotive User Interfaces and Interactive Vehicular
-Applications (AutomotiveUI Adjunct ’26), September 20–23, 2026, Gothenburg, Sweden. ACM, New York, NY, USA, 8 pages. https://doi.org/10.1145/3828158.3838264 
-
-> Archived repo artifact DOI for AutomotiveUI Adjunct '26 Submission (archived on 2026.08.16): <a href="https://doi.org/10.5281/zenodo.21966704"><img src="https://zenodo.org/badge/1007257388.svg" alt="DOI"></a> 
-
 ## Study conditions
 
 The launcher asks for a participant ID and one of three scenarios:
@@ -149,3 +142,10 @@ timestamp_initGestureTime;timestamp_inputGestureTime;gesture_reactTime;angle_pre
 - **Webcam index:** the webcam is opened at device index `0` (`gesture_manager.py`). If the wrong camera is used on a multi-camera machine, change the index in `cv2.VideoCapture(0)`.
 - **Port 2000 blocked / CARLA not ready:** the launcher waits up to 60 s for the simulator. If it never becomes ready, check for stale processes: `netstat -aon | findstr :2000`, then `taskkill /PID <pid> /F`.
 - **Global keyboard hook:** the `keyboard` package may require an elevated (administrator) terminal on some systems.
+
+## Paper for AutomotiveUI Adjunct '26
+Julia Podlipensky, Vanessa Scherer, Monika Szuban, and Ignacio Alvarez. 2026. EchoDrive: Gamification of Perceptual Guidance
+via Spatial Audio in AV Driving Simulation. In 18th International Conference on Automotive User Interfaces and Interactive Vehicular
+Applications (AutomotiveUI Adjunct ’26), September 20–23, 2026, Gothenburg, Sweden. ACM, New York, NY, USA, 8 pages. https://doi.org/10.1145/3828158.3838264 
+
+> Archived repo artifact DOI for AutomotiveUI Adjunct '26 Submission (archived on 2026.08.16): <a href="https://doi.org/10.5281/zenodo.21966704"><img src="https://zenodo.org/badge/1007257388.svg" alt="DOI"></a> 
